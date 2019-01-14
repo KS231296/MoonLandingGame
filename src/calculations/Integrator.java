@@ -31,8 +31,6 @@ public class Integrator {
         int nSteps = (int) ((tStop - tStart) / dt); // #castowanie
 
 
-        // tu będą równania 1a,1b,1c
-        for (int i = 0; i < nSteps; i++) {
             odeUpdate.update (t, h, v, m);// wywołanie metody update // wrzuca wartości początkowe do listy
 
 // całkowanie metodą Eulera Cromera
@@ -86,17 +84,3 @@ public class Integrator {
 
     }
 
-
-}//koniec klasy Integrator
-
-
-
-/*
-
-            double vNew = v+a*dt;
-            double hNew = h+vNew*dt;
-            double aNew = calculateAcceleration.a (u,m,g,k); // u bedzie zmieniane
-            double mNew = u;
-
-
- */

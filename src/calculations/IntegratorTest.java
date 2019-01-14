@@ -21,7 +21,7 @@ public class IntegratorTest {
         Integrator test1 = new Integrator (1);
 
         // obiekty klas implementujących interfejsy , później użyjemy te obiekty do wywołania metod z tych interfejsów
-        calculations.LandingAcceleration landingAcceleration = new calculations.LandingAcceleration();
+        LandingAcceleration landingAcceleration = new LandingAcceleration();
         LandingAnalyzer1 landingAnalyzer1 = new LandingAnalyzer1 ();
 
         test1.integrate (landingAcceleration, landingAnalyzer1, 0, 700, h0, v0,m0, u ,g,k); // wywołanie metody

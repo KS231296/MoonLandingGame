@@ -1,0 +1,13 @@
+.default-color0.chart-series-line { -fx-stroke: red; }
+.default-color0.chart-line-symbol { -fx-background-color: magenta;}
+
+.default-color0.chart {-fx-background-color: black}
+
+
+
+#pane{
+    -fx-background-image: url("images/background.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+}
+

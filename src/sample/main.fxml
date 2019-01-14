@@ -6,20 +6,29 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
 <SplitPane dividerPositions="0.5" pickOnBounds="false" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
    <items>
-      <AnchorPane minHeight="300.0" minWidth="400.0" prefHeight="600.0" prefWidth="379.0" />
-      <AnchorPane maxWidth="420.0" minHeight="300.0" minWidth="400.0" prefHeight="600.0" prefWidth="600.0">
+      <AnchorPane id="pane"  maxHeight="900.0" maxWidth="800.0" minHeight="600.0" minWidth="666.0" prefHeight="900.0" prefWidth="800.0" style="-fx-background-color: black ;">
          <children>
-            <Slider fx:id="sliderThrust" blockIncrement="5.0" layoutX="82.0" layoutY="170.0" onDragDetected="#thrust" orientation="VERTICAL" prefHeight="300.0" prefWidth="14.0" showTickMarks="true" />
-            <Text fx:id="txtCiag" layoutX="78.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min ()" />
-            <Text layoutX="27.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max ()" />
-            <LineChart fx:id="chartVH" layoutX="132.0" layoutY="59.0" prefHeight="230.0" prefWidth="239.0">
+            <ImageView fx:id="imgRocket" fitHeight="256.0" fitWidth="225.0" layoutX="238.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/fallingRocket.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane maxHeight="600.0" maxWidth="400.0" minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: black;">
+         <children>
+            <Slider fx:id="sliderThrust" blockIncrement="5.0" disable="true" layoutX="82.0" layoutY="170.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="14.0" showTickMarks="true" />
+            <Text fx:id="txtCiag" fill="WHITE" layoutX="78.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fill="WHITE" layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min ()" />
+            <Text fill="WHITE" layoutX="27.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max ()" />
+            <LineChart fx:id="chartVH" layoutX="119.0" layoutY="35.0" prefHeight="274.0" prefWidth="269.0">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -27,10 +36,10 @@
                   <NumberAxis side="LEFT" />
                </yAxis>
             </LineChart>
-            <Button fx:id="btnReset" layoutX="29.0" layoutY="25.0" mnemonicParsing="false" onAction="#restart" text="RESTART" />
+            <Button fx:id="btnReset" defaultButton="true" layoutX="29.0" layoutY="25.0" mnemonicParsing="false" onAction="#restart" text="START" />
             <Circle fill="DODGERBLUE" layoutX="268.0" layoutY="439.0" radius="70.0" stroke="BLACK" strokeType="INSIDE" />
-            <Text layoutX="187.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-            <Text fx:id="value" layoutX="71.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
+            <Text fill="WHITE" layoutX="187.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="value" fill="WHITE" layoutX="71.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
          </children>
       </AnchorPane>
    </items>

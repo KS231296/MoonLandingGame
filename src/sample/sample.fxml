@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
    <children>
-      <TextField fx:id="txtNick" layoutX="126.0" layoutY="75.0" promptText="Podaj nick" />
-      <Button fx:id="btnStart" layoutX="174.0" layoutY="113.0" mnemonicParsing="false" onAction="#startApp" text="START" />
-      <Text layoutX="115.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nick:" />
+      <TextField fx:id="txtNick" layoutX="126.0" layoutY="75.0" promptText="Podaj nick" style="-fx-background-color: #011d00;" />
+      <Button fx:id="btnStart" layoutX="174.0" layoutY="113.0" mnemonicParsing="false" onAction="#startApp" style="-fx-background-color: black;" text="OK" textFill="#0fff00" />
+      <Text fill="#2fff00" layoutX="115.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nick:" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

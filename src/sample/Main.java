@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -16,6 +15,8 @@ public class Main extends Application {
         primaryStage.setTitle("Moon Landing");
         primaryStage.setScene(new Scene(root, 400, 200));
         primaryStage.show();
+        primaryStage.getScene().getStylesheets().add("sample/style.css");
+
     }
 
 
