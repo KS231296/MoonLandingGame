@@ -121,19 +121,19 @@ public class CalcThread implements Runnable, Observer {
     @Override
     public void run() {
         isRunning = true;
+        analyzer1.update(t0, h0, v0, m0);// wywołanie metody update // wrzuca wartości początkowe do listy
 
         while (isRunning) {
             try {
-                analyzer1.update(t0, h0, v0, m0);// wywołanie metody update // wrzuca wartości początkowe do listy
 
                 integrator.integrate(acceleration, analyzer1, t0,  h0, v0, m0, u, g, k); // wywołanie metody
 
-                t0 = integrator.getT();
+              /*  t0 = integrator.getT();
                 h0 = integrator.getH();
                 v0 = integrator.getV();
-                m0 = integrator.getM();
+                m0 = integrator.getM();*/
 
-                /*ArrayList tList = analyzer1.gettList();
+                ArrayList tList = analyzer1.gettList();
                 ArrayList hList = analyzer1.gethList();
                 ArrayList vList = analyzer1.getvList();
                 ArrayList mList = analyzer1.getmList();
@@ -142,7 +142,7 @@ public class CalcThread implements Runnable, Observer {
                 t0 = (double)tList.get(tList.size()-1);
                 h0 = (double)tList.get(hList.size()-1);
                 v0 = (double)tList.get(vList.size()-1);
-                m0 = (double)tList.get(mList.size()-1);*/
+                m0 = (double)tList.get(mList.size()-1);
 
                 System.out.println("u: " + u + " h: " + h0 + " t: " + t0);
 //isRunning = false;

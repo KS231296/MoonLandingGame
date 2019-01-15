@@ -42,7 +42,6 @@ public class ControllerMain {
     CalcThread calcThread;
 
 
-
     ChangeListener listener = new ChangeListener() {
         @Override
         public void changed(ObservableValue observableValue, Object o, Object t1) {
@@ -54,7 +53,17 @@ public class ControllerMain {
     };
 
 
-    public void thrust() {
+    public void moveRocket(double distanceM) {
+        int land = 400;
+        int start = -50;
+        int wholeDistancePX = 450;
+        double wholeDistanceM = 50000;
+        double pxPERmetr = 0.009;
+
+        int distancePX = (int) (distanceM * pxPERmetr);
+        int posY = land - distancePX;
+imgRocket.setLayoutY()
+
     }
 
     @FXML

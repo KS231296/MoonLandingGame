@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/ThrustThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/calculations/Integrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/calculations/Integrator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/calculations/IntegratorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/calculations/IntegratorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/calculations/LandingAnalyzer1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/calculations/LandingAnalyzer1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/sample/CalcThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/sample/CalcThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/sample/ControllerMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/sample/ControllerMain$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/sample/ControllerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/sample/ControllerMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/sample/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/sample/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculations/Integrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculations/Integrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculations/IntegratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculations/IntegratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CalcThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CalcThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ControllerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ControllerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/main.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -105,14 +91,14 @@
         <counts>
           <entry key="CSS" value="2" />
           <entry key="Image" value="6" />
-          <entry key="JAVA" value="23" />
+          <entry key="JAVA" value="25" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="96" />
-          <entry key="JAVA" value="2609" />
+          <entry key="JAVA" value="2919" />
           <entry key="XML" value="141" />
         </counts>
       </usages-collector>
@@ -138,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ControllerMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="53" column="6" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
+            <state relative-caret-position="343">
+              <caret line="64" column="21" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -156,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/CalcThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="132" column="39" lean-forward="true" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
+            <state relative-caret-position="355">
+              <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#969#970#0" expanded="true" />
@@ -211,10 +197,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/interfaces/CalculateAcceleration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/interfaces/ODEUpdate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/calculations/Integrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="43" column="7" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+            <state relative-caret-position="296">
+              <caret line="158" column="21" lean-forward="true" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="21" />
               <folding>
                 <element signature="e#2068#2069#0" expanded="true" />
                 <element signature="e#2093#2094#0" expanded="true" />
@@ -243,27 +247,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/calculations/IntegratorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/main.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="338">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -301,6 +286,7 @@
     <findStrings>
       <find>thrust</find>
       <find>ba</find>
+      <find>mov</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -333,9 +319,9 @@
         <option value="$PROJECT_DIR$/src/calculations/IntegratorTest.java" />
         <option value="$PROJECT_DIR$/src/sample/images/thrustThread.java" />
         <option value="$PROJECT_DIR$/src/sample/ThrustThread.java" />
-        <option value="$PROJECT_DIR$/src/sample/ControllerMain.java" />
         <option value="$PROJECT_DIR$/src/calculations/Integrator.java" />
         <option value="$PROJECT_DIR$/src/sample/CalcThread.java" />
+        <option value="$PROJECT_DIR$/src/sample/ControllerMain.java" />
       </list>
     </option>
   </component>
@@ -418,7 +404,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547586036922" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547590611248" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../projekt1" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -560,18 +546,18 @@
       <workItem from="1545906823585" duration="8787000" />
       <workItem from="1546726626987" duration="1005000" />
       <workItem from="1547027667219" duration="2943000" />
-      <workItem from="1547310431717" duration="36932000" />
+      <workItem from="1547310431717" duration="41646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54206000" />
+    <option name="totallyTimeSpent" value="58920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.31467474" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.31467474" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -580,7 +566,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3276923" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3276923" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -625,13 +611,6 @@
     <entry file="file://$PROJECT_DIR$/src/LandingCalculation/Projekt1/src/calculations/Integrator.java" />
     <entry file="file://$PROJECT_DIR$/src/LandingCalculation/Projekt1/src/calculations/IntegratorTest.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/K.java" />
-    <entry file="file://$PROJECT_DIR$/src/interfaces/ODEUpdate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -684,13 +663,6 @@
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/interfaces/CalculateAcceleration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/style.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -746,23 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ControllerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="53" column="6" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ThrustThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -788,36 +743,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/calculations/Integrator.java">
+    <entry file="file://$PROJECT_DIR$/src/interfaces/CalculateAcceleration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="43" column="7" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
-          <folding>
-            <element signature="e#2068#2069#0" expanded="true" />
-            <element signature="e#2093#2094#0" expanded="true" />
-            <element signature="e#2121#2122#0" expanded="true" />
-            <element signature="e#2145#2146#0" expanded="true" />
-            <element signature="e#2173#2174#0" expanded="true" />
-            <element signature="e#2197#2198#0" expanded="true" />
-            <element signature="e#2225#2226#0" expanded="true" />
-            <element signature="e#2249#2250#0" expanded="true" />
-            <element signature="e#2277#2278#0" expanded="true" />
-            <element signature="e#2301#2302#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interfaces/ODEUpdate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/calculations/IntegratorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+        <state relative-caret-position="338">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ControllerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="64" column="21" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ThrustThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CalcThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="132" column="39" lean-forward="true" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
+        <state relative-caret-position="355">
+          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#969#970#0" expanded="true" />
@@ -862,6 +829,25 @@
             <element signature="e#2625#2626#0" expanded="true" />
             <element signature="e#3172#3173#0" expanded="true" />
             <element signature="e#3205#3206#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/calculations/Integrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="158" column="21" lean-forward="true" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="21" />
+          <folding>
+            <element signature="e#2068#2069#0" expanded="true" />
+            <element signature="e#2093#2094#0" expanded="true" />
+            <element signature="e#2121#2122#0" expanded="true" />
+            <element signature="e#2145#2146#0" expanded="true" />
+            <element signature="e#2173#2174#0" expanded="true" />
+            <element signature="e#2197#2198#0" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2249#2250#0" expanded="true" />
+            <element signature="e#2277#2278#0" expanded="true" />
+            <element signature="e#2301#2302#0" expanded="true" />
           </folding>
         </state>
       </provider>
