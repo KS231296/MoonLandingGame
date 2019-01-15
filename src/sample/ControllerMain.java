@@ -1,5 +1,7 @@
 package sample;
 
+import calculations.LandingAcceleration;
+import calculations.LandingAnalyzer1;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,22 +29,25 @@ public class ControllerMain {
     private boolean win = false;
     private boolean landed = false;
     private double thrustValue;
+    private double thrustValue1s;
     private String nick;
     private boolean started = false;
-    private Thread calculations = new Thread();
     private Scores score;
     private double fuel;
     private double h;
     private double v;
     private File scoresFile = new File("scoresData");
     private Thread mainGame = new Thread();
-    CalcThread calcThread = new CalcThread(1000);
+    private Thread calculations = new Thread();
+    CalcThread calcThread;
+
 
 
     ChangeListener listener = new ChangeListener() {
         @Override
         public void changed(ObservableValue observableValue, Object o, Object t1) {
             thrustValue = sliderThrust.getValue();
+            calcThread.setU(thrustValue);
             changeRocket();
             value.setText(String.format("val = %.2f", thrustValue));
         }
@@ -82,17 +88,25 @@ public class ControllerMain {
 
     @FXML
     void restart(ActionEvent event) {
+        LandingAnalyzer1 analyzer = new LandingAnalyzer1();
+        LandingAcceleration accaleration = new LandingAcceleration();
+
+        calcThread = new CalcThread(200, thrustValue, accaleration, analyzer);
+
         if (!started) {
             btnReset.setText("RESTART");
             sliderThrust.valueProperty().addListener(listener);
             sliderThrust.setDisable(false);
             started = true;
-            mainGame.start();
-            //  calcThread.run();
+            calculations = new Thread(calcThread);
+            calculations.start();
+            // mainGame.start();
+//              calcThread.run();
         } else {
             //    calcThread.stop();
             //  calcThread.run();
-
+            calculations.interrupt();
+            calculations.start();
         }
 
     }
@@ -143,7 +157,7 @@ public class ControllerMain {
             nick = "no name";
         }
         score = new Scores(nick);
-        newScene(event, "main.fxml", 1066, 600);
+        newScene(event, "main.fxml", 950, 650);
 
     }
 
@@ -156,6 +170,7 @@ public class ControllerMain {
             Stage stage = new Stage();
 
             stage.setTitle("Moon Game");
+            stage.resizableProperty().setValue(Boolean.FALSE);
             stage.setScene(scene);
 
             stage.show();

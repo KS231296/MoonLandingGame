@@ -40,6 +40,21 @@ public class LandingAnalyzer1 implements ODEUpdate {
         return mList;
     }
 
+    public void settList(ArrayList<Double> tList) {
+        this.tList = tList;
+    }
+
+    public void sethList(ArrayList<Double> hList) {
+        this.hList = hList;
+    }
+
+    public void setvList(ArrayList<Double> vList) {
+        this.vList = vList;
+    }
+
+    public void setmList(ArrayList<Double> mList) {
+        this.mList = mList;
+    }
 
     //metody
     @Override // wyrzuca wartości t,x,v do tablic

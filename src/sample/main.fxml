@@ -12,19 +12,24 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.5" pickOnBounds="false" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
+<SplitPane dividerPositions="0.5" pickOnBounds="false" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
    <items>
-      <AnchorPane id="pane"  maxHeight="900.0" maxWidth="800.0" minHeight="600.0" minWidth="666.0" prefHeight="900.0" prefWidth="800.0" style="-fx-background-color: black ;">
+      <AnchorPane id="pane" maxHeight="900.0" maxWidth="600.0" minHeight="600.0" minWidth="558.0" prefHeight="648.0" prefWidth="558.0" style="-fx-background-color: black ;">
          <children>
-            <ImageView fx:id="imgRocket" fitHeight="256.0" fitWidth="225.0" layoutX="238.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="648.0" fitWidth="700.0" layoutY="1.0" preserveRatio="true">
+               <image>
+                  <Image url="@images/background.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgRocket" fitHeight="256.0" fitWidth="225.0" layoutX="149.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/fallingRocket.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
-      <AnchorPane maxHeight="600.0" maxWidth="400.0" minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: black;">
+      <AnchorPane maxHeight="950.0" maxWidth="400.0" minHeight="600.0" minWidth="400.0" prefHeight="950.0" prefWidth="400.0" style="-fx-background-color: black;">
          <children>
-            <Slider fx:id="sliderThrust" blockIncrement="5.0" disable="true" layoutX="82.0" layoutY="170.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="14.0" showTickMarks="true" />
+            <Slider fx:id="sliderThrust" blockIncrement="5.0" disable="true" layoutX="82.0" layoutY="170.0" max="16.5" orientation="VERTICAL" prefHeight="300.0" prefWidth="14.0" showTickMarks="true" />
             <Text fx:id="txtCiag" fill="WHITE" layoutX="78.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fill="WHITE" layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min ()" />
             <Text fill="WHITE" layoutX="27.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max ()" />

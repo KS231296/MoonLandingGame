@@ -4,7 +4,16 @@ public class IntegratorTest {
 
     public static void main(String[] args) {
 
-        //stałe
+        double t = 0.2;
+        double s = 1;
+
+        double r = s%t;
+
+        System.out.println(r);
+
+
+
+      /*  //stałe
 
         double v0 = -150; // m/s
         double h0 = 50000; // m
@@ -31,7 +40,7 @@ public class IntegratorTest {
         landingAnalyzer1.saveToFile ("C:\\Users\\gendasai\\Desktop\\LandingChartsData.txt"); //używane do wyrysowania wykresu w MatLabie
 
 
-        System.out.println (landingAnalyzer1.calculateLandingTime ());
+        System.out.println (landingAnalyzer1.calculateLandingTime ());*/
 
 
     }
