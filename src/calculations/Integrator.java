@@ -6,14 +6,17 @@ import interfaces.ODEUpdate;
 public class Integrator {
 
 
-    //pola
-    private double dt; // krok całkowania [s]
 
-    private double t; // [s]
-    private double h;
-    private double v;
-    private double m;
-    private double a;
+
+    //pola
+    private double dt; // krok całkowania
+    // ustawianie wartości początkowych
+    public double t ;
+    public double h ;
+    public double v ;
+    public double m ;
+
+    public double a;
 
     //konstruktor
     public Integrator(double dt) {
@@ -21,80 +24,7 @@ public class Integrator {
     }
 
     //metody
-    public void integrateVoid(CalculateAcceleration calculateAcceleration, ODEUpdate odeUpdate, double tStart, double tStop, double h0, double v0, double m0, double u, double g, double k) { // double tStart, double x0, double v0 - warunki początkowe // calculateAcceleration-zaimplementowany interfejs
-        //tStart i tStop to granice przedziału czasowego
-
-
-        // ustawianie wartości początkowych
-        double t = tStart;
-        double h = h0;
-        double v = v0;
-        double m = m0;
-
-        double a = calculateAcceleration.a (u, m, g, k);
-
-        //ustawianie
-        int nSteps = (int) ((tStop - tStart) / dt); // #castowanie
-
-
-        // tu będą równania 1a,1b,1c
-        for (int i = 0; i < nSteps; i++) {
-            odeUpdate.update (t, h, v, m);// wywołanie metody update // wrzuca wartości początkowe do listy
-            System.out.println("pocz petli: u- " + u + " t- " + t + " h- " + h);
-// całkowanie metodą Eulera Cromera
-
-        /*    double vNew;
-            if (u == 0) { // gdy skonczy się paliwo
-                vNew = v+ g*dt   ;
-            } else {
-                vNew =  v+g*dt-a*dt   ;  // vNew = v + a * dt
-        }
-*/
-            double vNew;
-            vNew= v +   a*dt ;
-
-
-            double hNew = h + vNew * dt;
-
-
-
-
-            double mNew;
-            if (m > 1000) {// gdy statek ma jeszcze paliwo
-                mNew = m - u * dt;
-            } else {
-                u = 0;
-                mNew = 1000;
-            }
-
-
-            double aNew = calculateAcceleration.a (u, m, g, k); // u bedzie zmieniane
-
-
-
-
-
-
-
-            t = t + dt;// czas się zwiększa z każdym przejściem pętli
-
-
-            if(hNew>0){h = hNew;}else{h=0;vNew=0;}
-            v = vNew;
-
-
-
-            a = aNew;
-            m = mNew;
-            System.out.println("end petli: u- " + u + " t- " + t + " h- " + h);
-
-        }
-
-
-    }
-
-
-    public double[] integrate(CalculateAcceleration calculateAcceleration, ODEUpdate odeUpdate, double tStart, double h0, double v0, double m0, double u, double g, double k) { // double tStart, double x0, double v0 - warunki początkowe // calculateAcceleration-zaimplementowany interfejs
+    public void integrate(CalculateAcceleration calculateAcceleration, ODEUpdate odeUpdate, double tStart, double h0, double v0, double m0, double u, double g, double k) { // double tStart, double x0, double v0 - warunki początkowe // calculateAcceleration-zaimplementowany interfejs
         //tStart i tStop to granice przedziału czasowego
 
 
@@ -104,22 +34,20 @@ public class Integrator {
         v = v0;
         m = m0;
 
-        a = calculateAcceleration.a(u, m, g, k);
+        a = calculateAcceleration.a (u, m, g, k);
 
         //ustawianie
-        //  int nSteps = (int) ((tStop - tStart) / dt); // #castowanie
+        //     int nSteps = (int) ((tStop - tStart) / dt); // #castowanie
 
 
+        // tu będą równania 1a,1b,1c
+        //   for (int i = 0; i < nSteps; i++) {
+        odeUpdate.update (t, h, v, m);// wywołanie metody update // wrzuca wartości początkowe do listy
 
 // całkowanie metodą Eulera Cromera
 
-        /*    double vNew;
-            if (u == 0) { // gdy skonczy się paliwo
-                vNew = v+ g*dt   ;
-            } else {
-                vNew =  v+g*dt-a*dt   ;  // vNew = v + a * dt
-        }
-*/
+
+
         double vNew;
         vNew = v + a * dt;
 
@@ -136,48 +64,51 @@ public class Integrator {
         }
 
 
-        double aNew = calculateAcceleration.a(u, m, g, k); // u bedzie zmieniane
-        this.a = aNew;
+        double aNew = calculateAcceleration.a (u, m, g, k); // u bedzie zmieniane
+
 
         t = t + dt;// czas się zwiększa z każdym przejściem pętli
-        System.out.println("int T:" + t);
 
-        if (hNew <= 0) {
 
-            hNew = 0;
+
+
+
+        if (hNew > 0) {
+            h = hNew;
+        } else {
+            h = 0;
             vNew = 0;
         }
-
-        this.h = hNew;
-        this.m = mNew;
-        this.v = vNew;
-        System.out.println("integrator - u: " + u + " h: " + h +" v: " + v + " t: " + t);
-        odeUpdate.update(t, h, v, m);// wywołanie metody update // wrzuca wartości końcowe do listy
+        v = vNew;
 
 
-        double[] result = {t, hNew, vNew, mNew};
-        return result;
+        a = aNew;
+        m = mNew;
+
+
+        System.out.println ("h = "+  h);
+        System.out.println ("v = "+ v);
+
+
+        // }
+
+
+
+
+
     }
 
 
-    public double getDt() {
-        return dt;
-    }
+}//koniec klasy Integrator
 
-    public double getT() {
-        return t;
-    }
 
-    public double getH() {
-        return h;
-    }
 
-    public double getV() {
-        return v;
-    }
+/*
 
-    public double getM() {
-        return m;
-    }
-}
+            double vNew = v+a*dt;
+            double hNew = h+vNew*dt;
+            double aNew = calculateAcceleration.a (u,m,g,k); // u bedzie zmieniane
+            double mNew = u;
 
+
+ */

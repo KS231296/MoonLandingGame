@@ -151,8 +151,8 @@ public class ControllerMain implements Observer {
             calculations.interrupt();
             System.out.println("interrupt?");
             calcThread.stop();
-            calculations = new Thread(calcThread);
-            calculations.start();
+           // calculations = new Thread(calcThread);
+          //  calculations.start();
         }
 
     }
@@ -239,12 +239,24 @@ public class ControllerMain implements Observer {
         moveRocket(h);
         this.fuel = calcThread.getM0()-1000;
         rotateFuel(fuel);
-        
+
 
         Platform.runLater(() -> {
             actualizeDataSeries(h, v);
             chartUpdate();
         });
+
+
+        if(h == 0){
+            this.calcThread.stop();
+            calculations.interrupt();
+            landed = true;
+            if(-0.2<v && v<0.2){
+                win = true;
+            }
+            changeRocket();
+
+        }
 
 
     }
