@@ -77,6 +77,9 @@ public class ControllerMain implements Observer {
     }
 
     @FXML
+    private Text txtV;
+
+    @FXML
     private Line lineFuel;
 
     public void rotateFuel(double fuel) {
@@ -125,12 +128,23 @@ public class ControllerMain implements Observer {
     private ImageView imgRocket;
 
     @FXML
+    void stopGame(ActionEvent event) {
+        calculations.stop();
+        calcThread.stop();
+
+
+    }
+
+
+    @FXML
     void restart(ActionEvent event) {
         // LandingAnalyzer1 analyzer = new LandingAnalyzer1();
         //LandingAcceleration accaleration = new LandingAcceleration();
-       vh.getData().clear();
+        vh.getData().clear();
+
         h = 50000;
         v = -150;
+        changeRocket();
         calcThread = new CalcThread(thrustValue);
         calcThread.addObserver(this);
 
@@ -148,11 +162,11 @@ public class ControllerMain implements Observer {
 
         } else {
 
-            calculations.interrupt();
+            calculations.stop();
             System.out.println("interrupt?");
             calcThread.stop();
-            // calculations = new Thread(calcThread);
-            //  calculations.start();
+            calculations = new Thread(calcThread);
+            calculations.start();
         }
 
     }
@@ -243,12 +257,17 @@ public class ControllerMain implements Observer {
 
         rotateFuel(fuel);
         this.v = calcThread.getV0();
-
+        txtV.setText(String.format("%.2f", Math.abs(v)));
         Platform.runLater(() -> {
-            actualizeDataSeries(h, v);
+            actualizeDataSeries(h, Math.abs(v));
             chartUpdate();
         });
 
+        if (fuel == 0) {
+            sliderThrust.setDisable(true);
+            sliderThrust.setValue(0);
+            thrustValue = 0;
+        }
 
         if (h == 0) {
             this.calcThread.stop();

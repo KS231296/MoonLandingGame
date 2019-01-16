@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -10,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <SplitPane dividerPositions="0.5" pickOnBounds="false" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
@@ -33,7 +33,7 @@
             <Text fx:id="txtCiag" fill="WHITE" layoutX="78.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fill="WHITE" layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min ()" />
             <Text fill="WHITE" layoutX="27.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max ()" />
-            <LineChart fx:id="chartVH" animated="false" layoutX="119.0" layoutY="35.0" prefHeight="274.0" prefWidth="269.0" stylesheets="@style.css">
+            <LineChart fx:id="chartVH" animated="false" createSymbols="false" layoutX="119.0" layoutY="35.0" prefHeight="274.0" prefWidth="269.0" stylesheets="@style.css">
                <xAxis>
                   <NumberAxis side="BOTTOM" />
                </xAxis>
@@ -50,6 +50,13 @@
                </image>
             </ImageView>
             <Line fx:id="lineFuel" endX="56.0" fill="BLACK" layoutX="268.0" layoutY="439.0" />
+            <Button fx:id="btnStop" layoutX="146.0" layoutY="546.0" mnemonicParsing="false" onAction="#stopGame" style="-fx-background-color: red;" text="STOP">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Button>
+            <Text fill="#07ff00" layoutX="32.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V value: " />
+            <Text fx:id="txtV" fill="#07ff00" layoutX="85.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="val" />
          </children>
       </AnchorPane>
    </items>
