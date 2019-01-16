@@ -148,11 +148,10 @@ public class Integrator {
             vNew = 0;
         }
 
-        this.t = t;
         this.h = hNew;
         this.m = mNew;
         this.v = vNew;
-        System.out.println("integrator - u: " + u + " h: " + h + " t: " + t);
+        System.out.println("integrator - u: " + u + " h: " + h +" v: " + v + " t: " + t);
         odeUpdate.update(t, h, v, m);// wywołanie metody update // wrzuca wartości końcowe do listy
 
 

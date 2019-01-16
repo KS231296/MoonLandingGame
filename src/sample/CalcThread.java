@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class CalcThread implements Runnable, Observer {
+public class CalcThread extends Observable implements Runnable, Observer {
     private boolean isRunning;
     private int interval;
 
@@ -121,12 +121,17 @@ public class CalcThread implements Runnable, Observer {
     @Override
     public void run() {
         isRunning = true;
+        acceleration = new LandingAcceleration();
+        analyzer1 = new LandingAnalyzer1();
+
+
         analyzer1.update(t0, h0, v0, m0);// wywołanie metody update // wrzuca wartości początkowe do listy
 
         while (isRunning) {
             try {
-
-                integrator.integrate(acceleration, analyzer1, t0,  h0, v0, m0, u, g, k); // wywołanie metody
+                System.out.println("before: u: " + u + " h: " + h0 + " v: " + v0 + " t: " + t0);
+                //integrator.integrateVoid(acceleration, analyzer1, t0, 300, h0, v0, m0, u, g, k);
+                  integrator.integrate(acceleration, analyzer1, t0,  h0, v0, m0, u, g, k); // wywołanie metody
 
               /*  t0 = integrator.getT();
                 h0 = integrator.getH();
@@ -139,17 +144,16 @@ public class CalcThread implements Runnable, Observer {
                 ArrayList mList = analyzer1.getmList();
 
 
-                t0 = (double)tList.get(tList.size()-1);
-                h0 = (double)tList.get(hList.size()-1);
-                v0 = (double)tList.get(vList.size()-1);
-                m0 = (double)tList.get(mList.size()-1);
+                t0 = (double) tList.get(tList.size() - 1);
+                h0 = (double) tList.get(hList.size() - 1);
+                v0 = (double) tList.get(vList.size() - 1);
+                m0 = (double) tList.get(mList.size() - 1);
 
-                System.out.println("u: " + u + " h: " + h0 + " t: " + t0);
-//isRunning = false;
-                //   landingAnalyzer1.saveToFile ("C:\\Users\\gendasai\\Desktop\\LandingChartsData.txt"); //używane do wyrysowania wykresu w MatLabie
-                if (h0 == 0) {
+                System.out.println("u: " + u + " h: " + h0 + " v: " + v0 + " t: " + t0);
+               // isRunning = false;
+               /* if (h0 == 0) {
                     isRunning = false;
-                }
+                }*/
                 Thread.sleep(interval);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
