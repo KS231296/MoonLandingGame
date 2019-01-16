@@ -10,13 +10,13 @@ import java.util.Observer;
 
 public class CalcThread extends Observable implements Runnable, Observer {
     private boolean isRunning;
-    private int interval;
+    private int interval = 200;
 
 
     // obiekty klas implementujących interfejsy , później użyjemy te obiekty do wywołania metod z tych interfejsów
     private LandingAcceleration acceleration;
     private LandingAnalyzer1 analyzer1;
-    private Integrator integrator = new Integrator(interval / 1000);
+    private Integrator integrator = new Integrator((double) interval / 1000);
 
     private double t0 = 0;
     private double v0 = -150; // m/s
@@ -30,11 +30,9 @@ public class CalcThread extends Observable implements Runnable, Observer {
     private double u;
 
 
-    public CalcThread(int interval, double u, LandingAcceleration a, LandingAnalyzer1 odeUpdate) {
-        this.interval = interval;
+    public CalcThread(double u) {
         this.u = u;
-        this.acceleration = a;
-        this.analyzer1 = odeUpdate;
+
     }
 
     public boolean isRunning() {
@@ -124,9 +122,6 @@ public class CalcThread extends Observable implements Runnable, Observer {
         acceleration = new LandingAcceleration();
         analyzer1 = new LandingAnalyzer1();
 
-
-        analyzer1.update(t0, h0, v0, m0);// wywołanie metody update // wrzuca wartości początkowe do listy
-
         while (isRunning) {
             try {
                 System.out.println("before: u: " + u + " h: " + h0 + " v: " + v0 + " t: " + t0);
@@ -136,8 +131,8 @@ public class CalcThread extends Observable implements Runnable, Observer {
                 h0 = integrator.h;
                 v0 = integrator.v;
                 m0 = integrator.m;
-
-
+                setChanged();
+                notifyObservers(this);
                 System.out.println("u: " + u + " h: " + h0 + " v: " + v0 + " t: " + t0);
                 // isRunning = false;
                /* if (h0 == 0) {

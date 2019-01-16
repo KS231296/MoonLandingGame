@@ -40,8 +40,8 @@ public class ControllerMain implements Observer {
     private boolean started = false;
     private Scores score;
     private double fuel;
-    private double h;
-    private double v;
+    private double h = 50000;
+    private double v = -150;
     private File scoresFile = new File("scoresData");
     private Thread mainGame = new Thread();
     private Thread calculations = new Thread();
@@ -56,10 +56,8 @@ public class ControllerMain implements Observer {
             calcThread.setU(thrustValue);
             changeRocket();
             //double h = (thrustValue * 50000) / 16.5;
-           // moveRocket(h);
+            // moveRocket(h);
             value.setText(String.format("val = %.2f", thrustValue));
-            actualizeDataSeries(sliderThrust.getValue(), 3 * sliderThrust.getValue());
-            chartUpdate();
 
         }
     };
@@ -128,10 +126,12 @@ public class ControllerMain implements Observer {
 
     @FXML
     void restart(ActionEvent event) {
-        LandingAnalyzer1 analyzer = new LandingAnalyzer1();
-        LandingAcceleration accaleration = new LandingAcceleration();
-
-        calcThread = new CalcThread(200, thrustValue, accaleration, analyzer);
+        // LandingAnalyzer1 analyzer = new LandingAnalyzer1();
+        //LandingAcceleration accaleration = new LandingAcceleration();
+       vh.getData().clear();
+        h = 50000;
+        v = -150;
+        calcThread = new CalcThread(thrustValue);
         calcThread.addObserver(this);
 
         Platform.runLater(() -> {
@@ -151,8 +151,8 @@ public class ControllerMain implements Observer {
             calculations.interrupt();
             System.out.println("interrupt?");
             calcThread.stop();
-           // calculations = new Thread(calcThread);
-          //  calculations.start();
+            // calculations = new Thread(calcThread);
+            //  calculations.start();
         }
 
     }
@@ -236,10 +236,13 @@ public class ControllerMain implements Observer {
     public void update(Observable o, Object arg) {
         CalcThread calcThread = (CalcThread) o;
         this.h = calcThread.getH0();
+        System.out.println("update h: " + h);
         moveRocket(h);
-        this.fuel = calcThread.getM0()-1000;
-        rotateFuel(fuel);
+        this.fuel = calcThread.getM0() - 1000;
+        System.out.println("update fuel: " + fuel);
 
+        rotateFuel(fuel);
+        this.v = calcThread.getV0();
 
         Platform.runLater(() -> {
             actualizeDataSeries(h, v);
@@ -247,11 +250,11 @@ public class ControllerMain implements Observer {
         });
 
 
-        if(h == 0){
+        if (h == 0) {
             this.calcThread.stop();
             calculations.interrupt();
             landed = true;
-            if(-0.2<v && v<0.2){
+            if (-0.2 < v && v < 0.2) {
                 win = true;
             }
             changeRocket();

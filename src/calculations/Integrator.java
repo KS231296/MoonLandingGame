@@ -38,7 +38,7 @@ public class Integrator {
 
         //ustawianie
         //     int nSteps = (int) ((tStop - tStart) / dt); // #castowanie
-
+        System.out.println("befor update: " + h);
 
         // tu będą równania 1a,1b,1c
         //   for (int i = 0; i < nSteps; i++) {
@@ -88,6 +88,7 @@ public class Integrator {
 
         System.out.println ("h = "+  h);
         System.out.println ("v = "+ v);
+        System.out.println ("t = "+ t);
 
 
         // }
