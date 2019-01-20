@@ -3,21 +3,27 @@ package calculations;
 import interfaces.CalculateAcceleration;
 import interfaces.ODEUpdate;
 
+/**
+ * Klasa , w ktorej używając metody Eulera-Richardsona oblicza się kolejne wartości t,h,v,a i m
+ */
+
 public class Integrator {
 
 
+
+
+
     //pola
-    private double dt; // krok całkowania
-    // ustawianie wartości początkowych
+    private double dt;
     public double t;
     public double h;
     public double v;
     public double m;
-
     public double a;
 
+
     //konstruktor
-    public Integrator(double dt) { // uzyc eulera-richardsona
+    public Integrator(double dt) {
         this.dt = dt;
     }
 
@@ -31,76 +37,84 @@ public class Integrator {
         h = h0;
         v = v0;
         m = m0;
+        a = calculateAcceleration.a (u, m, g, k);
 
-        a = calculateAcceleration.a(u, m, g, k);
-
-        //ustawianie
-        //     int nSteps = (int) ((tStop - tStart) / dt); // #castowanie
-        System.out.println("befor update: " + h);
-
-        // tu będą równania 1a,1b,1c
-        //   for (int i = 0; i < nSteps; i++) {
-        odeUpdate.update(t, h, v, m);// wywołanie metody update // wrzuca wartości początkowe do listy
-
-// całkowanie metodą Eulera Cromera
+        odeUpdate.update (t, h, v, m);// wywołanie metody update // wrzuca wartości  do listy
 
 
-        double vNew;
-        vNew = v + a * dt;
-
-
-        double hNew = h + vNew * dt;
-
-
+        //masa
         double mNew;
+        double mHalf;
+
         if (m > 1000) {// gdy statek ma jeszcze paliwo
+
+            mHalf = m - u * 0.5 * dt;
             mNew = m - u * dt;
+
         } else {
             u = 0;
+            mHalf = 1000;
             mNew = 1000;
         }
 
 
-//        double aNew = calculateAcceleration.a(u, m, g, k); // u bedzie zmieniane
+        //przyspieszenie
+        double aHalf = calculateAcceleration.a (u, mHalf, g, k);
+        double aNew = calculateAcceleration.a (u, m, g, k); // u bedzie zmieniane
 
+        //prędkosc
+        double vHalf;
+        double vNew;
 
-        t = t + dt;// czas się zwiększa z każdym przejściem pętli
+        if (u == 0) { // gdy skonczy się paliwo
 
+            vHalf = v + 0.5 * g * dt;
+            vNew = v + g * dt;
 
-        if (hNew > 0) {
-            h = hNew;
         } else {
-            h = 0;
-         //   vNew = 0;
+
+            vHalf = v + 0.5 * a * dt;
+            vNew = v + aHalf * dt;
         }
+
+
+        //wysokosc
+        double hHalf = h + 0.5 * vNew * dt;
+        double hNew = h + vHalf * dt;
+
+
+        //ustawianie wartosci
+        t = t + dt;
         v = vNew;
-
-
-  //      a = aNew;
+        h = hNew;
+        a = aNew;
         m = mNew;
 
 
-        System.out.println("h = " + h);
-        System.out.println("v = " + v);
-        System.out.println("t = " + t);
-
-
-        // }
+        System.out.println ("h = " + h);
+        System.out.println ("v = " + v);
+        System.out.println ("t = " + t);
 
 
     }
 
+    /**
+     * @param dt krok calkowania
+     * @param t czas
+     * @param h wysokosc
+     * @param v predkosc
+     * @param m masa statku i paliwa
+     * @param a przyspieszenie statku
+     * @param mNew chwilowa masa
+     * @param vNew chwilowa predkosc
+     * @param hNew chwilowa wysokosc
+     * @param aNew chwilowe przyspieszenie
+     * @param mHalf polowkowa masa
+     * @param vHalf cpolowkowe predkosc
+     * @param hHalf polowkowa wysokosc
+     * @param aHalf polowkowe przyspieszenie
+     */
 
-}//koniec klasy Integrator
 
+}
 
-
-/*
-
-            double vNew = v+a*dt;
-            double hNew = h+vNew*dt;
-            double aNew = calculateAcceleration.a (u,m,g,k); // u bedzie zmieniane
-            double mNew = u;
-
-
- */
