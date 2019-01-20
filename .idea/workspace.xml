@@ -4,12 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java" line="12" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="w klasie Integrator zamieniono  metode Eulera-Cromera na metode Eulera-Richardsona , dodano opisy do JavaDoc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculations/Integrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculations/Integrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculations/IntegratorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculations/LandingAcceleration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculations/LandingAcceleration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/calculations/Integrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/calculations/Integrator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/calculations/IntegratorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/calculations/LandingAnalyzer1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/calculations/LandingAnalyzer1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MoonLanding/sample/ControllerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoonLanding/sample/ControllerMain.class" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/calculations/LandingAcceleration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#305#306#0" expanded="true" />
                 <element signature="e#339#340#0" expanded="true" />
@@ -93,12 +93,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/calculations/Integrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+            <state relative-caret-position="286">
+              <caret line="108" column="36" lean-forward="true" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#540#541#0" expanded="true" />
                 <element signature="e#595#596#0" expanded="true" />
               </folding>
@@ -106,10 +107,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="136">
               <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -176,9 +177,9 @@
         <option value="$PROJECT_DIR$/src/sample/CalcThread.java" />
         <option value="$PROJECT_DIR$/src/sample/ControllerMain.java" />
         <option value="$PROJECT_DIR$/src/calculations/IntegratorTest.java" />
+        <option value="$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java" />
         <option value="$PROJECT_DIR$/src/calculations/Integrator.java" />
         <option value="$PROJECT_DIR$/src/calculations/LandingAcceleration.java" />
-        <option value="$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java" />
       </list>
     </option>
   </component>
@@ -261,7 +262,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547986344661" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547986442850" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../EulerRichardsonCalculations" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -405,18 +406,26 @@
       <workItem from="1546726626987" duration="1005000" />
       <workItem from="1547027667219" duration="2943000" />
       <workItem from="1547310431717" duration="63343000" />
-      <workItem from="1547984665742" duration="1485000" />
+      <workItem from="1547984665742" duration="1754000" />
     </task>
+    <task id="LOCAL-00001" summary="w klasie Integrator zamieniono  metode Eulera-Cromera na metode Eulera-Richardsona , dodano opisy do JavaDoc">
+      <created>1547986377893</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1547986377893</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82102000" />
+    <option name="totallyTimeSpent" value="82371000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21079692" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21079692" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" weight="0.32980332" />
       <window_info id="Designer" order="3" />
@@ -426,7 +435,7 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38307694" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3822342" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -437,7 +446,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.3276923" />
+      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.3270525" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="15" />
       <window_info anchor="right" id="Maven" />
@@ -459,6 +468,8 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="w klasie Integrator zamieniono  metode Eulera-Cromera na metode Eulera-Richardsona , dodano opisy do JavaDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="w klasie Integrator zamieniono  metode Eulera-Cromera na metode Eulera-Richardsona , dodano opisy do JavaDoc" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -603,31 +614,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/calculations/LandingAcceleration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding>
-            <element signature="e#305#306#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/calculations/Integrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding>
-            <element signature="e#540#541#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/calculations/LandingAnalyzer1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="136">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -639,6 +628,29 @@
             <element signature="e#1239#1240#0" expanded="true" />
             <element signature="e#1292#1293#0" expanded="true" />
             <element signature="e#1326#1327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/calculations/LandingAcceleration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/calculations/Integrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="108" column="36" lean-forward="true" selection-start-line="108" selection-start-column="36" selection-end-line="108" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
           </folding>
         </state>
       </provider>
