@@ -165,6 +165,7 @@ public class ControllerMain implements Observer {
             calculations.stop();
             System.out.println("interrupt?");
             calcThread.stop();
+            sliderThrust.setDisable(false);
             calculations = new Thread(calcThread);
             calculations.start();
         }

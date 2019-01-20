@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class CalcThread extends Observable implements Runnable, Observer {
+public class CalcThread extends Observable implements Runnable, Observer { // observable i observer z java beans ogarnac
     private boolean isRunning;
     private int interval = 200;
 

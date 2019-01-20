@@ -6,20 +6,18 @@ import interfaces.ODEUpdate;
 public class Integrator {
 
 
-
-
     //pola
     private double dt; // krok całkowania
     // ustawianie wartości początkowych
-    public double t ;
-    public double h ;
-    public double v ;
-    public double m ;
+    public double t;
+    public double h;
+    public double v;
+    public double m;
 
     public double a;
 
     //konstruktor
-    public Integrator(double dt) {
+    public Integrator(double dt) { // uzyc eulera-richardsona
         this.dt = dt;
     }
 
@@ -34,7 +32,7 @@ public class Integrator {
         v = v0;
         m = m0;
 
-        a = calculateAcceleration.a (u, m, g, k);
+        a = calculateAcceleration.a(u, m, g, k);
 
         //ustawianie
         //     int nSteps = (int) ((tStop - tStart) / dt); // #castowanie
@@ -42,10 +40,9 @@ public class Integrator {
 
         // tu będą równania 1a,1b,1c
         //   for (int i = 0; i < nSteps; i++) {
-        odeUpdate.update (t, h, v, m);// wywołanie metody update // wrzuca wartości początkowe do listy
+        odeUpdate.update(t, h, v, m);// wywołanie metody update // wrzuca wartości początkowe do listy
 
 // całkowanie metodą Eulera Cromera
-
 
 
         double vNew;
@@ -64,37 +61,31 @@ public class Integrator {
         }
 
 
-        double aNew = calculateAcceleration.a (u, m, g, k); // u bedzie zmieniane
+//        double aNew = calculateAcceleration.a(u, m, g, k); // u bedzie zmieniane
 
 
         t = t + dt;// czas się zwiększa z każdym przejściem pętli
-
-
-
 
 
         if (hNew > 0) {
             h = hNew;
         } else {
             h = 0;
-            vNew = 0;
+         //   vNew = 0;
         }
         v = vNew;
 
 
-        a = aNew;
+  //      a = aNew;
         m = mNew;
 
 
-        System.out.println ("h = "+  h);
-        System.out.println ("v = "+ v);
-        System.out.println ("t = "+ t);
+        System.out.println("h = " + h);
+        System.out.println("v = " + v);
+        System.out.println("t = " + t);
 
 
         // }
-
-
-
 
 
     }

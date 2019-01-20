@@ -31,26 +31,26 @@
          <children>
             <Slider fx:id="sliderThrust" blockIncrement="5.0" disable="true" layoutX="82.0" layoutY="170.0" max="16.5" orientation="VERTICAL" prefHeight="300.0" prefWidth="14.0" showTickMarks="true" />
             <Text fx:id="txtCiag" fill="WHITE" layoutX="78.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fill="WHITE" layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min ()" />
-            <Text fill="WHITE" layoutX="27.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max ()" />
-            <LineChart fx:id="chartVH" animated="false" createSymbols="false" layoutX="119.0" layoutY="35.0" prefHeight="274.0" prefWidth="269.0" stylesheets="@style.css">
+            <Text fill="#07ff00" fontSmoothingType="LCD" layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max" />
+            <Text fill="#07ff00" layoutX="27.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min" />
+            <LineChart fx:id="chartVH" animated="false" createSymbols="false" layoutX="119.0" layoutY="35.0" legendVisible="false" prefHeight="274.0" prefWidth="269.0" stylesheets="@style.css">
                <xAxis>
-                  <NumberAxis side="BOTTOM" />
+                  <NumberAxis forceZeroInRange="false" side="BOTTOM" />
                </xAxis>
                <yAxis>
-                  <NumberAxis side="LEFT" />
+                  <NumberAxis forceZeroInRange="false" side="LEFT" />
                </yAxis>
             </LineChart>
             <Button fx:id="btnReset" defaultButton="true" layoutX="29.0" layoutY="25.0" mnemonicParsing="false" onAction="#restart" text="START" />
-            <Text fill="WHITE" layoutX="187.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel left:" />
-            <Text fx:id="value" fill="WHITE" layoutX="71.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
+            <Text fill="#07ff00" layoutX="187.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel left:" />
+            <Text fx:id="value" fill="#07ff00" layoutX="71.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
             <ImageView fitHeight="150.0" fitWidth="140.0" layoutX="198.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/fuel.png" />
                </image>
             </ImageView>
             <Line fx:id="lineFuel" endX="56.0" fill="BLACK" layoutX="268.0" layoutY="439.0" />
-            <Button fx:id="btnStop" layoutX="146.0" layoutY="546.0" mnemonicParsing="false" style="-fx-background-color: red;" text="STOP">
+            <Button fx:id="btnStop" layoutX="146.0" layoutY="546.0" mnemonicParsing="false" onAction="#stopGame" style="-fx-background-color: red;" text="STOP">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
