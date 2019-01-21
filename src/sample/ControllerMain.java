@@ -1,8 +1,6 @@
 package sample;
 
-import calculations.LandingAcceleration;
-import calculations.LandingAnalyzer1;
-import interfaces.CalculateAcceleration;
+
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,23 +17,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.util.Observable;
-import java.util.Observer;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ControllerMain implements Observer {
+public class ControllerMain implements PropertyChangeListener {
 
     private boolean win = false;
     private boolean landed = false;
     private double thrustValue;
-    private double thrustValue1s;
     private String nick;
     private boolean started = false;
     private Scores score;
@@ -43,10 +38,8 @@ public class ControllerMain implements Observer {
     private double h = 50000;
     private double v = -150;
     private File scoresFile = new File("scoresData");
-    private Thread mainGame = new Thread();
     private Thread calculations = new Thread();
-    CalcThread calcThread;
-
+    private CalcThread calcThread;
 
     ChangeListener listener = new ChangeListener() {
         @Override
@@ -55,9 +48,8 @@ public class ControllerMain implements Observer {
 
             calcThread.setU(thrustValue);
             changeRocket();
-            //double h = (thrustValue * 50000) / 16.5;
-            // moveRocket(h);
-            value.setText(String.format("val = %.2f", thrustValue));
+
+            value.setText(String.format("%.2f", thrustValue));
 
         }
     };
@@ -78,6 +70,9 @@ public class ControllerMain implements Observer {
 
     @FXML
     private Text txtV;
+
+    @FXML
+    private Text txtStart;
 
     @FXML
     private Line lineFuel;
@@ -131,6 +126,9 @@ public class ControllerMain implements Observer {
     void stopGame(ActionEvent event) {
         calculations.stop();
         calcThread.stop();
+        started = false;
+        btnReset.setText("START");
+        txtStart.setText("If you're ready, press here ->");
 
 
     }
@@ -138,31 +136,34 @@ public class ControllerMain implements Observer {
 
     @FXML
     void restart(ActionEvent event) {
-        // LandingAnalyzer1 analyzer = new LandingAnalyzer1();
-        //LandingAcceleration accaleration = new LandingAcceleration();
+
         vh.getData().clear();
+        chartVH.getData().clear();
+        chartVH.getData().removeAll();
 
         h = 50000;
         v = -150;
+        fuel = 2730.14 - 1000;
         changeRocket();
-        calcThread = new CalcThread(thrustValue);
-        calcThread.addObserver(this);
 
 
         if (!started) {
             btnReset.setText("RESTART");
+            txtStart.setText("");
             sliderThrust.valueProperty().addListener(listener);
+            calcThread = new CalcThread(thrustValue);
+            calcThread.addListener(this);
             sliderThrust.setDisable(false);
             started = true;
             calculations = new Thread(calcThread);
             calculations.start();
 
         } else {
-
-            calculations.stop();
-            System.out.println("interrupt?");
             calcThread.stop();
+            calcThread = new CalcThread(thrustValue);
+            calcThread.addListener(this);
             sliderThrust.setDisable(false);
+            started = true;
             calculations = new Thread(calcThread);
             calculations.start();
         }
@@ -245,17 +246,31 @@ public class ControllerMain implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        CalcThread calcThread = (CalcThread) o;
-        this.h = calcThread.getH0();
-        System.out.println("update h: " + h);
-        moveRocket(h);
-        this.fuel = calcThread.getM0() - 1000;
-        System.out.println("update fuel: " + fuel);
+    public void propertyChange(PropertyChangeEvent evt) {
 
+        String newProperty = evt.getPropertyName();
+        double newVal = (double) evt.getNewValue();
+
+        switch (newProperty) {
+            case "h0": {
+                h = newVal;
+                break;
+            }
+            case "m0": {
+                fuel = newVal - 1000;
+                break;
+            }
+            case "v0": {
+
+                v = newVal;
+                txtV.setText(String.format("%.2f", Math.abs(v)));
+                break;
+            }
+
+        }
+        moveRocket(h);
         rotateFuel(fuel);
-        this.v = calcThread.getV0();
-        txtV.setText(String.format("%.2f", Math.abs(v)));
+
         Platform.runLater(() -> {
             actualizeDataSeries(h, Math.abs(v));
             chartUpdate();
@@ -268,7 +283,7 @@ public class ControllerMain implements Observer {
         }
 
         if (h == 0) {
-            this.calcThread.stop();
+            calcThread.stop();
             calculations.interrupt();
             landed = true;
             if (-0.2 < v && v < 0.2) {
@@ -277,7 +292,7 @@ public class ControllerMain implements Observer {
             changeRocket();
 
         }
-
-
     }
-}
+
+
+} // end class

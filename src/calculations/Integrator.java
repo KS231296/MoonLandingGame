@@ -91,9 +91,6 @@ public class Integrator {
         m = mNew;
 
 
-        System.out.println ("h = " + h);
-        System.out.println ("v = " + v);
-        System.out.println ("t = " + t);
 
 
     }

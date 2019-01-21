@@ -26,10 +26,15 @@
                   <Image url="@images/fallingRocket.png" />
                </image>
             </ImageView>
+            <Text fx:id="txtStart" fill="#07ff00" layoutX="288.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you're ready, press start -&gt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children></AnchorPane>
       <AnchorPane maxHeight="950.0" maxWidth="400.0" minHeight="600.0" minWidth="400.0" prefHeight="950.0" prefWidth="400.0" style="-fx-background-color: black;">
          <children>
-            <Slider fx:id="sliderThrust" blockIncrement="5.0" disable="true" layoutX="82.0" layoutY="170.0" max="16.5" orientation="VERTICAL" prefHeight="300.0" prefWidth="14.0" showTickMarks="true" />
+            <Slider fx:id="sliderThrust" blockIncrement="0.5" disable="true" layoutX="82.0" layoutY="170.0" majorTickUnit="1.0" max="16.5" minorTickCount="1" orientation="VERTICAL" prefHeight="300.0" prefWidth="14.0" showTickMarks="true" />
             <Text fx:id="txtCiag" fill="WHITE" layoutX="78.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fill="#07ff00" fontSmoothingType="LCD" layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max" />
             <Text fill="#07ff00" layoutX="27.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min" />
@@ -41,9 +46,12 @@
                   <NumberAxis forceZeroInRange="false" side="LEFT" />
                </yAxis>
             </LineChart>
-            <Button fx:id="btnReset" defaultButton="true" layoutX="29.0" layoutY="25.0" mnemonicParsing="false" onAction="#restart" text="START" />
+            <Button fx:id="btnReset" defaultButton="true" layoutX="29.0" layoutY="25.0" mnemonicParsing="false" onAction="#restart" style="-fx-background-color: transparent;" text="START" textFill="#07ff00">
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font></Button>
             <Text fill="#07ff00" layoutX="187.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel left:" />
-            <Text fx:id="value" fill="#07ff00" layoutX="71.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
+            <Text fx:id="value" fill="#07ff00" layoutX="76.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="val" />
             <ImageView fitHeight="150.0" fitWidth="140.0" layoutX="198.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/fuel.png" />
@@ -57,6 +65,7 @@
             </Button>
             <Text fill="#07ff00" layoutX="32.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V value: " />
             <Text fx:id="txtV" fill="#07ff00" layoutX="85.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="val" />
+            <Text fill="#07ff00" layoutX="17.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thrust value:" />
          </children>
       </AnchorPane>
    </items>
