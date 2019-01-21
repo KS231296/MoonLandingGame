@@ -148,10 +148,7 @@ public class ControllerMain implements Observer {
         calcThread = new CalcThread(thrustValue);
         calcThread.addObserver(this);
 
-        Platform.runLater(() -> {
-            actualizeDataSeries(sliderThrust.getValue(), 3 * sliderThrust.getValue());
-            chartUpdate();
-        });
+
         if (!started) {
             btnReset.setText("RESTART");
             sliderThrust.valueProperty().addListener(listener);
