@@ -82,6 +82,9 @@ public class Integrator {
         double hHalf = h + 0.5 * vNew * dt;
         double hNew = h + vHalf * dt;
 
+        if(hNew <= 0){
+            hNew = 0;
+        }
 
         //ustawianie wartosci
         t = t + dt;

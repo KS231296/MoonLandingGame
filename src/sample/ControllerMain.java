@@ -72,6 +72,9 @@ public class ControllerMain implements PropertyChangeListener {
     private Text txtV;
 
     @FXML
+    private Text scoreTXT;
+
+    @FXML
     private Text txtStart;
 
     @FXML
@@ -208,6 +211,8 @@ public class ControllerMain implements PropertyChangeListener {
     @FXML
     private Button btnStart;
 
+    @FXML
+    private Text txtH;
 
     @FXML
     void startApp(ActionEvent event) {
@@ -254,6 +259,7 @@ public class ControllerMain implements PropertyChangeListener {
         switch (newProperty) {
             case "h0": {
                 h = newVal;
+                txtH.setText(String.format("%.2f", Math.abs(h)));
                 break;
             }
             case "m0": {
@@ -290,7 +296,14 @@ public class ControllerMain implements PropertyChangeListener {
                 win = true;
             }
             changeRocket();
+            score.setScore((int) (fuel * 100 - Math.abs(v)) + 100);
+            if(win){
+                scoreTXT.setText("Congratulations, "+nick+"!\n You landed succesfully!"+"\nYour score: " + score);
 
+            }else{
+                scoreTXT.setText("You crashed, "+nick+" ;("+"\nYour score: " + score);
+
+            }
         }
     }
 
