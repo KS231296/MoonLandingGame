@@ -129,19 +129,29 @@ public class ControllerMain implements PropertyChangeListener {
 
     @FXML
     void stopGame(ActionEvent event) {
-        calculations.stop();
-        calcThread.stop();
+        if(started) {
+            calculations.stop();
+            calcThread.stop();
+        }
         started = false;
+
+        if (landed) {
+            endGame(event);
+        }
         btnReset.setText("START");
         txtStart.setText("If you're ready, press here ->");
-
 
     }
 
 
     @FXML
     void restart(ActionEvent event) {
+        if (landed) {
+            endGame(event);
+        }
+
         score = ScoresData.readJSON(scoreTmpFile).getScores().get(0);
+        nick = score.getNick();
         vh.getData().clear();
         chartVH.getData().clear();
         chartVH.getData().removeAll();
@@ -155,6 +165,7 @@ public class ControllerMain implements PropertyChangeListener {
         if (!started) {
             btnReset.setText("RESTART");
             txtStart.setText("");
+            landed = false;
             sliderThrust.valueProperty().addListener(listener);
             calcThread = new CalcThread(thrustValue);
             calcThread.addListener(this);
@@ -200,9 +211,18 @@ public class ControllerMain implements PropertyChangeListener {
 
     public void endGame(ActionEvent event) {
         sliderThrust.setDisable(true);
-        score.setScore((int) fuel * 100);
-        saveScore(scoresFile);
-        new Alert(Alert.AlertType.INFORMATION, "Your score: " + score.getScore(), new ButtonType("OK", ButtonBar.ButtonData.OK_DONE)).showAndWait();
+        new Alert(Alert.AlertType.CONFIRMATION, "Your score: " + score.getScore() + "\n Do you want to save your score?", new ButtonType("YES", ButtonBar.ButtonData.YES), new ButtonType("NO", ButtonBar.ButtonData.NO)).showAndWait().ifPresent(response -> {
+            switch (response.getButtonData()) {
+
+                case NO: {
+                    break;
+                }
+                case YES: {
+                    saveScore(scoresFile);
+                    break;
+                }
+            }
+        });
         started = false;
         newScene(event, "sample.fxml", 400, 200);
     }
@@ -252,15 +272,23 @@ public class ControllerMain implements PropertyChangeListener {
     }
 
     private void saveScore(File scoresFile) {
-        ScoresData scores = ScoresData.readJSON(scoresFile);
-        scores.addScores(score);
-        ScoresData.saveJSON(scores, scoresFile);
+        try {
+            ScoresData scores = ScoresData.readJSON(scoresFile);
+            scores.addScores(score);
+            ScoresData.saveJSON(scores, scoresFile);
+        }catch (NullPointerException e){
+            ScoresData scores = new ScoresData();
+            scores.addScores(score);
+            ScoresData.saveJSON(scores, scoresFile);
+        }
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        int points = (int) (fuel * 100 - Math.abs(v)) + 100;
+        if (landed) {
+            moveRocket(0);
 
+        }
         String newProperty = evt.getPropertyName();
         double newVal = (double) evt.getNewValue();
 
@@ -289,7 +317,6 @@ public class ControllerMain implements PropertyChangeListener {
             actualizeDataSeries(h, Math.abs(v));
             chartUpdate();
         });
-        score.setScore(points);
 
         if (fuel == 0) {
             sliderThrust.setDisable(true);
@@ -300,19 +327,24 @@ public class ControllerMain implements PropertyChangeListener {
         if (h == 0) {
             calcThread.stop();
             calculations.interrupt();
+
             landed = true;
             if (-0.2 < v && v < 0.2) {
                 win = true;
-                score.setScore(points * 3);
             }
             changeRocket();
             if (win) {
+                score.setScore(((int)(fuel  + 100) / 3)+(int) ((fuel+200) - (Math.abs(v)*1000))*100);
+
                 scoreTXT.setText("Congratulations, " + nick + "!\n You landed succesfully!" + "\nYour score: " + score.getScore());
 
             } else {
+                score.setScore(((int) (fuel  + 100) / 3));
+
                 scoreTXT.setText("You crashed, " + nick + " ;(" + "\nYour score: " + score.getScore());
 
             }
+
         }
     }
 

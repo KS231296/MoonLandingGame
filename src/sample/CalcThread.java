@@ -16,14 +16,16 @@ import java.time.LocalTime;
 
 public class CalcThread implements Runnable, PropertyChangeListener { // observable i observer z java beans ogarnac
     private boolean isRunning;
-    private int interval = 200;
+    private int interval = 100;
     private PropertyChangeSupport support;
 
 
     // obiekty klas implementujących interfejsy , później użyjemy te obiekty do wywołania metod z tych interfejsów
     private LandingAcceleration acceleration;
     private LandingAnalyzer1 analyzer1;
-    private Integrator integrator = new Integrator((double) interval / 1000);
+//    private Integrator integrator = new Integrator((double) interval / 1000);
+private Integrator integrator = new Integrator(0.2);
+
 
     private double t0 = 0;
     private double v0 = -150; // m/s
