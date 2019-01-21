@@ -10,21 +10,22 @@ import javafx.beans.Observable;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.sql.Time;
-import java.time.LocalTime;
 
+/**
+ * Wątek obliczania zmiennych
+ */
 
 public class CalcThread implements Runnable, PropertyChangeListener { // observable i observer z java beans ogarnac
     private boolean isRunning;
-    private int interval = 100;
+    private int interval = 100; // przyspieszenie symulacji. czas rzeczywisty dla wartosci 200
     private PropertyChangeSupport support;
 
 
     // obiekty klas implementujących interfejsy , później użyjemy te obiekty do wywołania metod z tych interfejsów
     private LandingAcceleration acceleration;
     private LandingAnalyzer1 analyzer1;
-//    private Integrator integrator = new Integrator((double) interval / 1000);
-private Integrator integrator = new Integrator(0.2);
+    //    private Integrator integrator = new Integrator((double) interval / 1000);
+    private Integrator integrator = new Integrator(0.2);
 
 
     private double t0 = 0;

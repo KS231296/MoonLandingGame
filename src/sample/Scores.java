@@ -1,5 +1,8 @@
 package sample;
 
+/**
+ * klasa do przechowywania danych - pojedynczy wynik
+ */
 public class Scores {
     private final String nick;
     private int score;

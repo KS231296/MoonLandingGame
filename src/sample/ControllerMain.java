@@ -129,7 +129,7 @@ public class ControllerMain implements PropertyChangeListener {
 
     @FXML
     void stopGame(ActionEvent event) {
-        if(started) {
+        if (started) {
             calculations.stop();
             calcThread.stop();
         }
@@ -276,7 +276,7 @@ public class ControllerMain implements PropertyChangeListener {
             ScoresData scores = ScoresData.readJSON(scoresFile);
             scores.addScores(score);
             ScoresData.saveJSON(scores, scoresFile);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             ScoresData scores = new ScoresData();
             scores.addScores(score);
             ScoresData.saveJSON(scores, scoresFile);
@@ -334,12 +334,12 @@ public class ControllerMain implements PropertyChangeListener {
             }
             changeRocket();
             if (win) {
-                score.setScore(((int)(fuel  + 100) / 3)+(int) ((fuel+200) - (Math.abs(v)*1000))*100);
+                score.setScore(((int) (fuel + 100) / 3) + (int) ((fuel + 200) - (Math.abs(v) * 1000)) * 100);
 
                 scoreTXT.setText("Congratulations, " + nick + "!\n You landed succesfully!" + "\nYour score: " + score.getScore());
 
             } else {
-                score.setScore(((int) (fuel  + 100) / 3));
+                score.setScore(((int) (fuel + 100) / 3));
 
                 scoreTXT.setText("You crashed, " + nick + " ;(" + "\nYour score: " + score.getScore());
 
