@@ -68,8 +68,8 @@ public class Integrator {
 
         if (u == 0) { // gdy skonczy się paliwo
 
-            vHalf = v + 0.5 * g * dt;
-            vNew = v + g * dt;
+            vHalf = v - 0.5 * g * dt;
+            vNew = v - g * dt;
 
         } else {
 
