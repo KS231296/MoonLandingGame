@@ -3,11 +3,7 @@ package sample;
 import calculations.Integrator;
 import calculations.LandingAcceleration;
 import calculations.LandingAnalyzer1;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 
-
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -15,7 +11,7 @@ import java.beans.PropertyChangeSupport;
  * Wątek obliczania zmiennych
  */
 
-public class CalcThread implements Runnable, PropertyChangeListener { // observable i observer z java beans ogarnac
+public class CalcThread implements Runnable {
     private boolean isRunning;
     private int interval = 100; // przyspieszenie symulacji. czas rzeczywisty dla wartosci 200
     private PropertyChangeSupport support;
@@ -49,6 +45,9 @@ public class CalcThread implements Runnable, PropertyChangeListener { // observa
         support = new PropertyChangeSupport(this);
     }
 
+    /**
+     * zmienna sec powoduje opóźnienie w odczytywaniu wartosci ciągu
+     */
     @Override
     public void run() {
         isRunning = true;
@@ -165,11 +164,14 @@ public class CalcThread implements Runnable, PropertyChangeListener { // observa
         support.removePropertyChangeListener((PropertyChangeListener) pcl);
     }
 
-    public void setT0(double value) {
-        support.firePropertyChange("t0", this.t0, value);
-        this.t0 = value;
-    }
 
+
+
+    /**
+     * metody zmieniające wartości pól klasy które mają być obserwowane poprzez PropertyChangeListener
+     * umożliwia to zarejestrowanie zmiany i wywołaniu metody propertyChange implementowanej w klasie ControllerMain
+     * @param value nowa wartość
+     */
     public void setH0(double value) {
         support.firePropertyChange("h0", this.h0, value);
         this.h0 = value;
@@ -184,12 +186,10 @@ public class CalcThread implements Runnable, PropertyChangeListener { // observa
         support.firePropertyChange("m0", this.m0, value);
         this.m0 = value;
     }
+    //</editor-fold>
 
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
 
-    }
 
 
 }

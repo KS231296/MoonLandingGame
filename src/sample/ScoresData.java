@@ -11,29 +11,22 @@ import java.util.ArrayList;
  */
 public class ScoresData {
 
-    private ArrayList<Scores> scores;
     static Gson gson = new Gson();
-
-    public void addScores(Scores score) {
-        this.scores.add(score);
-    }
+    private ArrayList<Scores> scores;
 
     public ScoresData() {
         this.scores = new ArrayList<>();
-    }
-
-    public ArrayList<Scores> getScores() {
-        return scores;
-    }
-
-    public void setScores(ArrayList<Scores> scores) {
-        this.scores = scores;
     }
 
     public ScoresData(ArrayList<Scores> scores) {
         this.scores = scores;
     }
 
+    /**
+     * Metoda zapisu danych do pliku z wykorzystaniem JSON
+     * @param data zmienna przechowujaca dane
+     * @param dataFile plik zapisu
+     */
     public static void saveJSON(ScoresData data, File dataFile) {
 
         try (FileWriter writer = new FileWriter(dataFile)) {
@@ -43,15 +36,36 @@ public class ScoresData {
         }
     }
 
+    /**
+     * metoda odczytu z pliku z wykorzystaniem JSON
+     * @param dataFile plik odczytu
+     * @return obiekt klasy danych
+     */
     public static ScoresData readJSON(File dataFile) {
         ScoresData data = null;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(dataFile))) {
             data = gson.fromJson(bufferedReader, ScoresData.class);
         } catch (IOException e) {
             e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to load data");
+            new Alert(Alert.AlertType.ERROR, "Failed to load data").showAndWait();
         }
         return data;
+    }
+
+    /**
+     * aktualizowanie listy winików
+     * @param score pojedynczy wynik (nick + ilosc punktów)
+     */
+    public void addScores(Scores score) {
+        this.scores.add(score);
+    }
+
+    public ArrayList<Scores> getScores() {
+        return scores;
+    }
+
+    public void setScores(ArrayList<Scores> scores) {
+        this.scores = scores;
     }
 
 

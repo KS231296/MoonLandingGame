@@ -26,6 +26,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * główna klasa kontrolująca aplikacje
+ */
 public class ControllerMain implements PropertyChangeListener {
 
     private boolean win = false;
@@ -37,12 +40,14 @@ public class ControllerMain implements PropertyChangeListener {
     private double fuel;
     private double h = 50000;
     private double v = -150;
-    private File scoresFile = new File("scoresData");
-    private File scoreTmpFile = new File("scoresTmp");
+    private File scoresFile = new File("scores.data");
+    private File scoreTmpFile = new File("scores.tmp");
 
     private Thread calculations = new Thread();
     private CalcThread calcThread;
-
+    /**
+     * obserwowanie zmian wartości slidera
+     */
     ChangeListener listener = new ChangeListener() {
         @Override
         public void changed(ObservableValue observableValue, Object o, Object t1) {
@@ -56,7 +61,10 @@ public class ControllerMain implements PropertyChangeListener {
         }
     };
 
-
+    /**
+     * metoda zmiany pozycji rakiety, przeliczenie odleglości na piksele
+     * @param distanceM odległość (h) od księżyca w metrac
+     */
     public void moveRocket(double distanceM) {
         double land = 400;
         double start = -50;
@@ -82,8 +90,12 @@ public class ControllerMain implements PropertyChangeListener {
     @FXML
     private Line lineFuel;
 
+    /**
+     * obrót wskaźnika paliwa
+     * @param fuel ilość paliwa (masa)
+     */
     public void rotateFuel(double fuel) {
-        double converter = Math.PI / 1730.15;
+        double converter = Math.PI / 1730.15; //zamiana wartości na kąt
         double rad = converter * fuel;
         double r = 56;
         double yPos = -r * Math.sin(rad);
@@ -96,8 +108,6 @@ public class ControllerMain implements PropertyChangeListener {
     @FXML
     private Slider sliderThrust;
 
-    @FXML
-    private Text txtCiag;
 
     @FXML
     private LineChart<Number, Number> chartVH;
@@ -127,6 +137,10 @@ public class ControllerMain implements PropertyChangeListener {
     @FXML
     private ImageView imgRocket;
 
+    /**
+     * przycisk zatrzymujacy gre
+     * @param event
+     */
     @FXML
     void stopGame(ActionEvent event) {
         if (started) {
@@ -143,7 +157,10 @@ public class ControllerMain implements PropertyChangeListener {
 
     }
 
-
+    /**
+     * przycisk restart - rozpoczyna gre od poczatku, przerywa istniejaca jesli jest
+     * @param event
+     */
     @FXML
     void restart(ActionEvent event) {
         if (landed) {
@@ -186,6 +203,9 @@ public class ControllerMain implements PropertyChangeListener {
 
     }
 
+    /**
+     * zmienia obrazek rakiety
+     */
     public void changeRocket() {
         Image img;
         if (landed) {
@@ -209,6 +229,10 @@ public class ControllerMain implements PropertyChangeListener {
         imgRocket.imageProperty().setValue(img);
     }
 
+    /**
+     * po zakonczeniu gry
+     * @param event
+     */
     public void endGame(ActionEvent event) {
         sliderThrust.setDisable(true);
         new Alert(Alert.AlertType.CONFIRMATION, "Your score: " + score.getScore() + "\n Do you want to save your score?", new ButtonType("YES", ButtonBar.ButtonData.YES), new ButtonType("NO", ButtonBar.ButtonData.NO)).showAndWait().ifPresent(response -> {
@@ -236,6 +260,10 @@ public class ControllerMain implements PropertyChangeListener {
     @FXML
     private Text txtH;
 
+    /**
+     * nowa gra, nowy nick
+     * @param event
+     */
     @FXML
     void startApp(ActionEvent event) {
         nick = txtNick.getText();
@@ -251,6 +279,13 @@ public class ControllerMain implements PropertyChangeListener {
 
     }
 
+    /**
+     * metoda otwierajaca nowa scene
+     * @param event
+     * @param fxmlName nazwa pliku fxml
+     * @param width
+     * @param height
+     */
     private void newScene(ActionEvent event, String fxmlName, int width, int height) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -271,6 +306,10 @@ public class ControllerMain implements PropertyChangeListener {
         }
     }
 
+    /**
+     * aktualizacja danych
+     * @param scoresFile
+     */
     private void saveScore(File scoresFile) {
         try {
             ScoresData scores = ScoresData.readJSON(scoresFile);
@@ -283,6 +322,12 @@ public class ControllerMain implements PropertyChangeListener {
         }
     }
 
+    /**
+     * metoda wywolywana podczas
+     * @param evt zmiany parametru watku obserwowanego
+     *
+     *
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (landed) {
