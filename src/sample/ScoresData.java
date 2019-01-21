@@ -14,6 +14,14 @@ public class ScoresData {
     private ArrayList<Scores> scores;
     static Gson gson = new Gson();
 
+    public void addScores(Scores score) {
+        this.scores.add(score);
+    }
+
+    public ScoresData() {
+        this.scores = new ArrayList<>();
+    }
+
     public ArrayList<Scores> getScores() {
         return scores;
     }

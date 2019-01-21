@@ -6,6 +6,7 @@ public class Scores {
 
     public Scores(String nick) {
         this.nick = nick;
+        this.score = 0;
     }
 
     public void setScore(int score) {
